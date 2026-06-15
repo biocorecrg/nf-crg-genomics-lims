@@ -13,6 +13,9 @@ nextflowPlugin {
         'biocorecrg.plugin.LimsExtension',
         'biocorecrg.plugin.LimsFactory'
     ]
+    registry {
+        apiKey = System.getenv('NPR_API_KEY') ?: (project.findProperty('npr.apiKey') ?: '')
+    }
 }
 
 repositories {
