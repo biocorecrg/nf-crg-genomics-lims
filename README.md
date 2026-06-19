@@ -44,7 +44,7 @@ To enable the plugin, add it to your pipeline's `nextflow.config`:
 
 ```groovy
 plugins {
-    id 'nf-crg-genomics-lims@0.1.0'
+    id 'nf-crg-genomics-lims@0.1.1'
 }
 
 params {
@@ -92,6 +92,24 @@ If `params.lims_upload_file` is defined, the plugin automatically uploads the sp
   * `Content-Type`: Automatically set based on the `lims_upload_mode`:
     * `'multipart'`: `multipart/form-data; boundary=...` (sends the file within form field name specified by `lims_upload_form_field`, defaulting to `'file'`).
     * `'binary'`: The parsed content type of the file (e.g. `text/html`, `application/octet-stream`). Sends the file as raw request body.
+
+## Activating the Plugin
+
+By default, the plugin is loaded but stays **inactive**. To activate it, you must explicitly enable it in your configuration:
+
+```groovy
+lims {
+    enabled = true
+}
+```
+
+Or pass it as a parameter:
+
+```groovy
+params {
+    lims_enabled = true
+}
+```
 
 ---
 
